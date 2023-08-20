@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -9,8 +9,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src')
+        test: /\.ts$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'ts-loader'
       },
       {
         test: require.resolve('Phaser'),
@@ -26,6 +27,6 @@ module.exports = {
     open: false
   },
   resolve: {
-    extensions: ['.js']
+    extensions: ['.ts', '.js']
   }
 };
